@@ -1,0 +1,113 @@
+2016-11-16 14:09:47,248 [INFO] (Thread-1  ) Connected (version 2.0, client OpenSSH_6.6.1)
+2016-11-16 14:09:47,636 [INFO] (Thread-1  ) Authentication (password) successful!
+2016-11-16 14:09:48,644 [INFO] (MainThread) connect status :True
+2016-11-16 14:09:50,718 [INFO] (MainThread) Last login: Tue Nov 15 10:58:01 2016
+debug line cellular 0 atcmd "AT!GSTATUS?"
+RoadTest.localdomain > [Jd[Je[Jb[Ju[Jg[J [Jl[Ji[Jn[Je[J [Jc[Je[Jl[Jl[Ju[Jl[Ja[Jr[J [J0[J [Ja[Jt[Jc[Jm[Jd[J [J"[JA[JT[J![JG[JS[JT[JA[JT[JU[JS[J?[J"[J
+timeout set to 5 seconds
+send (AT\!GSTATUS?^M)
+expect (OK)
+AT!GSTATUS?
+
+
+!GSTATUS: 
+
+Current Time:  149833		Temperature: 40
+
+Reset Counter: 3		Mode:        ONLINE         
+
+System mode:   LTE        	PS state:    Attached     
+
+LTE band:      B7     		LTE bw:      20 MHz  
+
+LTE Rx chan:   2850		LTE Tx chan: 20850
+
+LTE CA state:  NOT ASSIGNED
+
+EMM state:     Registered     	Normal Service 
+
+RRC state:     RRC Idle       
+
+IMS reg state: No Srv  		
+
+
+
+PCC RxM RSSI:  -86		RSRP (dBm):  -123
+
+PCC RxD RSSI:  -79		RSRP (dBm):  -113
+
+Tx Power:      0		TAC:         2801 (10241)
+
+RSRQ (dB):     -13.6		Cell ID:     01C14635 (29443637)
+
+SINR (dB):      4.4
+
+
+
+
+
+OK
+ -- got it
+
+
+RoadTest.localdomain > [J
+2016-11-16 14:09:53,480 [INFO] (MainThread) Last login: Wed Nov 16 14:09:48 2016 from 10.2.64.57
+debug line cellular 1 atcmd "AT!GSTATUS?"
+RoadTest.localdomain > [Jd[Je[Jb[Ju[Jg[J [Jl[Ji[Jn[Je[J [Jc[Je[Jl[Jl[Ju[Jl[Ja[Jr[J [J1[J [Ja[Jt[Jc[Jm[Jd[J [J"[JA[JT[J![JG[JS[JT[JA[JT[JU[JS[J?[J"[J
+timeout set to 5 seconds
+send (AT\!GSTATUS?^M)
+expect (OK)
+AT!GSTATUS?
+
+
+!GSTATUS: 
+
+Current Time:  416902		Temperature: 37
+
+Reset Counter: 1		Mode:        ONLINE         
+
+System mode:   LTE        	PS state:    Attached     
+
+LTE band:      B3     		LTE bw:      10 MHz  
+
+LTE Rx chan:   1250		LTE Tx chan: 19250
+
+LTE CA state:  NOT ASSIGNED
+
+EMM state:     Registered     	Normal Service 
+
+RRC state:     RRC Idle       
+
+IMS reg state: No Srv  		
+
+
+
+PCC RxM RSSI:  -50		RSRP (dBm):  -77
+
+PCC RxD RSSI:  -49		RSRP (dBm):  -75
+
+Tx Power:      0		TAC:         58B6 (22710)
+
+RSRQ (dB):     -8.2		Cell ID:     01C1A1E7 (29467111)
+
+SINR (dB):     17.4
+
+
+
+
+
+OK
+ -- got it
+
+
+RoadTest.localdomain > [J
+2016-11-16 14:09:56,164 [INFO] (MainThread) Last login: Wed Nov 16 14:09:51 2016 from 10.2.64.57
+show gps detail
+RoadTest.localdomain > [Js[Jh[Jo[Jw[J [Jg[Jp[Js[J [Jd[Je[Jt[Ja[Ji[Jl[J
+[?1h=GPS status : Enabled                        Receive time : Unknown[m
+Number of Satellites : 0 / 0                Fix Quality : No Signal[m
+Horizontal DOP : 0.000000                   Latitude : 0.000000[m
+Longitude : 0.000000                        Altitude : 0.000000[m
+Direction : 0.000000                        Speed (m/s) : 0.000000[m
+Climb : 0.000000                            Accuracy Estimate (m) : 0.000000[m
+[K[?1l>RoadTest.localdomain > [J
