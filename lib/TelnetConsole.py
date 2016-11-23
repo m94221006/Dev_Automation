@@ -179,6 +179,20 @@ class Telnet_Console(object):
               return False
               print "telnet command error"
 
+    def send_command_match(self,command,result,timeout,checkResponse):
+         try:
+
+            self.telnet.write((command + "\n").encode('ascii'))
+            self.telnetresult = self.telnet.read_until(checkResponse, timeout=int(timeout))
+            p = re.compile(result)
+            match = p.search(self.telnetresult)
+            if (match == None):
+                return False
+            else:
+                return True
+         except :
+                return False
+
     def check_images(self,type,build):
         cmdresult = self.send_command("show boot system-image", 5, "localdomain")
         if cmdresult == True:
@@ -370,9 +384,8 @@ class Telnet_Console(object):
 
 
 if __name__ == '__main__':
-    set_log("CheckLTEGPSSTATUS1103.log")
 
-
-
+  telnetconsole =Telnet_Console('10.2.66.50',2038)
+  telnetconsole.kill_User("router")
 
 
