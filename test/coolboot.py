@@ -29,7 +29,7 @@ def command_result_comparsion(telnetconsole,checkcommandlist,checkaction,checkit
 
 
 if __name__ == '__main__':
-    set_log("coolboot.log")
+    set_log("coolboot123.log")
     type ='console'
     consoleip = "10.2.66.50"
     consoleport = 2038
