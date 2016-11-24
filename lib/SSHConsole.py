@@ -20,7 +20,7 @@ class SSHConnect(object):
 
 
     def set_log(self,filename):
-        logging.basicConfig(filename=filename,level=logging.INFO,format='%(asctime)s [%(levelname)s] (%(threadName)-10s) %(message)s', )
+        logging.basicConfig(filename=filename,level=logging.DEBUG,format='%(asctime)s [%(levelname)s] (%(threadName)-10s) %(message)s', )
         console = logging.StreamHandler()
         console.setLevel(logging.DEBUG)
         formatter = logging.Formatter(' %(asctime)s [%(levelname)s] (%(threadName)-10s) %(message)s')
@@ -36,13 +36,23 @@ class SSHConnect(object):
                 self.IsConnect= True
             else:
                 self.IsConnect =False
-
-            logging.info("connect status :%s"%(sshconnect.IsConnect))
+            logging.debug("connect status :%s"%(self.IsConnect))
 
         except Exception,ex:
             logging.error("[connect]ssh login fail:%s "%(str(ex)))
             self.IsConnect =False
             self.ssh.close()
+
+    def disconnect(self):
+        try:
+            self.ssh.close()
+            time.sleep(1)
+            self.IsConnect =False
+            logging.debug("connect status :%s"%(self.IsConnect))
+        except Exception,ex:
+            logging.error("[disconnect]ssh disconnect fail:%s "%(str(ex)))
+            self.IsConnect =False
+
 
     def write_command(self, command,logflag =True):
         try:
@@ -52,14 +62,32 @@ class SSHConnect(object):
                 time.sleep(2)
                 self.sshresult = remote_conn.recv(5000)
                 if logflag == True:
-                    logging.info(self.sshresult)
+                    logging.debug(self.sshresult)
 
             else:
-                logging.info("Connection not opened.")
+                logging.debug("Connection not opened.")
         except Exception,ex:
             logging.error("[write_command]write command fail:%s "%(str(ex)))
             self.IsConnect =False
             self.ssh.close()
+
+
+    def write_command_match(self,command,result):
+         try:
+            if(self.ssh):
+                remote_conn = self.ssh.invoke_shell()
+                remote_conn.send((command + "\n").encode('ascii'))
+                time.sleep(2)
+                self.sshresult = remote_conn.recv(5000)
+                p = re.compile(result)
+                match = p.search(self.sshresult)
+                if (match == None):
+                    return False
+                else:
+                    return True
+         except :
+                return False
+
 
 
 if __name__ == '__main__':
